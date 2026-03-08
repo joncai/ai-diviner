@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tarot Diviner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Starry Sky Background -->
+    <div class="starry-sky"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">✨ AI Tarot Diviner ✨</h1>
+            <p class="tagline">Unveil your destiny through the cards and the wisdom of AI</p>
+        </header>
+
+        <!-- Input Section -->
+        <section class="input-section">
+            <div class="input-wrapper">
+                <label for="question">Ask your question:</label>
+                <textarea 
+                    id="question" 
+                    class="question-input" 
+                    placeholder="e.g., What does the future hold for my career?" 
+                    aria-label="Enter your divination question"
+                    rows="3"
+                ></textarea>
+                <button 
+                    id="divination-btn" 
+                    class="divination-btn" 
+                    aria-label="Start the divination"
+                >
+                    Start Divination
+                </button>
+                <p id="error-message" class="error-message" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <!-- Cards Section -->
+        <section class="cards-section">
+            <div class="cards-container">
+                <!-- Card 1 -->
+                <div class="card" data-card-index="0">
+                    <div class="card-inner">
+                        <div class="card-back">
+                            <div class="gold-pattern"></div>
+                            <p class="back-text">Tarot</p>
+                        </div>
+                        <div class="card-front">
+                            <div class="card-content">
+                                <p class="card-symbol">—</p>
+                                <p class="card-name">—</p>
+                                <p class="card-description">—</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="card" data-card-index="1">
+                    <div class="card-inner">
+                        <div class="card-back">
+                            <div class="gold-pattern"></div>
+                            <p class="back-text">Tarot</p>
+                        </div>
+                        <div class="card-front">
+                            <div class="card-content">
+                                <p class="card-symbol">—</p>
+                                <p class="card-name">—</p>
+                                <p class="card-description">—</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="card" data-card-index="2">
+                    <div class="card-inner">
+                        <div class="card-back">
+                            <div class="gold-pattern"></div>
+                            <p class="back-text">Tarot</p>
+                        </div>
+                        <div class="card-front">
+                            <div class="card-content">
+                                <p class="card-symbol">—</p>
+                                <p class="card-name">—</p>
+                                <p class="card-description">—</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Interpretation Section (Hidden until cards flip) -->
+        <section id="interpretation-section" class="interpretation-section hidden">
+            <div class="interpretation-card">
+                <h2>Your Reading</h2>
+                <div class="selected-cards">
+                    <p><strong>Cards drawn:</strong> <span id="cards-drawn">—</span></p>
+                </div>
+                <div class="interpretation-content">
+                    <p id="interpretation-text" class="interpretation-text">Generating your reading...</p>
+                    <div id="loading-spinner" class="spinner"></div>
+                </div>
+                <div class="api-info">
+                    <p><em>Powered by AI divination</em></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reset Button (appears after interpretation) -->
+        <div class="reset-container hidden">
+            <button id="reset-btn" class="reset-btn" aria-label="Reset and perform another divination">
+                New Reading
+            </button>
+        </div>
+    </div>
+
+    <!-- Load API configuration first (before script.js) -->
+    <script src="config.js"></script>
+    <!-- Main application script -->
+    <script src="script.js"></script>
+</body>
+</html>

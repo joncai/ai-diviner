@@ -1,0 +1,647 @@
+/* ========================================
+   AI TAROT DIVINER - CSS STYLESHEET
+   Theme: Mysterious Purple & Gold
+   ======================================== */
+
+/* ========================================
+   ROOT & THEME VARIABLES
+   ======================================== */
+:root {
+    --primary-dark: #1a0033;
+    --primary-darker: #0f001a;
+    --accent-gold: #d4af37;
+    --accent-light-gold: #f4d03f;
+    --text-light: #ffffff;
+    --text-muted: #b0b0b0;
+    --card-bg-dark: #2d1b4e;
+    --purple-light: #4a2875;
+    
+    /* Spacing & sizing */
+    --container-max-width: 1200px;
+    --card-width: 280px;
+    --card-height: 420px;
+    --border-radius: 12px;
+    
+    /* Animation timing */
+    --flip-duration: 0.6s;
+    --flip-ease: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ========================================
+   GLOBAL STYLES
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--primary-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    position: relative;
+}
+
+/* ========================================
+   STARRY SKY BACKGROUND ANIMATION
+   ========================================
+   CSS-only animated starry sky using
+   radial gradients and keyframe animation
+   ======================================== */
+
+.starry-sky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20% 30%, #eee, hsla(0, 0%, 100%, 0)),
+        radial-gradient(2px 2px at 50% 60%, #fff, hsla(0, 0%, 100%, 0)),
+        radial-gradient(1px 1px at 80% 10%, #fff, hsla(0, 0%, 100%, 0)),
+        radial-gradient(1px 1px at 10% 80%, #fff, hsla(0, 0%, 100%, 0)),
+        radial-gradient(2px 2px at 60% 20%, #ddd, hsla(0, 0%, 100%, 0)),
+        radial-gradient(1px 1px at 30% 50%, #fff, hsla(0, 0%, 100%, 0)),
+        radial-gradient(1px 1px at 70% 80%, #fff, hsla(0, 0%, 100%, 0)),
+        radial-gradient(2px 2px at 40% 40%, #fff, hsla(0, 0%, 100%, 0)),
+        radial-gradient(1px 1px at 90% 50%, #fff, hsla(0, 0%, 100%, 0)),
+        radial-gradient(1px 1px at 25% 70%, #ddd, hsla(0, 0%, 100%, 0));
+    background-size: 
+        200% 200%,
+        150% 150%,
+        180% 180%,
+        160% 160%,
+        170% 170%,
+        190% 190%,
+        210% 210%,
+        195% 195%,
+        185% 185%,
+        175% 175%;
+            background-position: 
+        0% 0%,
+        10% 20%,
+        20% 30%,
+        30% 10%,
+        40% 50%,
+        50% 40%,
+        60% 60%,
+        70% 20%,
+        80% 70%,
+        90% 80%;
+    background-attachment: fixed;
+    z-index: 0;
+    animation: twinkle 8s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+/* ========================================
+   MAIN CONTAINER
+   ======================================== */
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================
+   HEADER & TYPOGRAPHY
+   ======================================== */
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent-light-gold);
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 
+                 0 0 40px rgba(26, 0, 51, 0.8);
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.tagline {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    font-style: italic;
+    letter-spacing: 1px;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   INPUT SECTION
+   ======================================== */
+.input-section {
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.input-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-wrapper label {
+    font-size: 1.1rem;
+    color: var(--accent-gold);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.question-input {
+    padding: 1rem;
+    border: 2px solid var(--accent-gold);
+    border-radius: var(--border-radius);
+    background-color: rgba(26, 0, 51, 0.6);
+    color: var(--text-light);
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
+    transition: all 0.3s ease;
+}
+
+.question-input:focus {
+    outline: none;
+    border-color: var(--accent-light-gold);
+    background-color: rgba(26, 0, 51, 0.8);
+    box-shadow: 0 0 20px rgba(244, 208, 63, 0.3);
+}
+
+.question-input::placeholder {
+    color: var(--text-muted);
+}
+
+.divination-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-light-gold));
+    color: var(--primary-dark);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+.divination-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
+}
+
+.divination-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.divination-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.error-message {
+    color: #ff6b6b;
+    font-size: 0.95rem;
+    text-align: center;
+    min-height: 1.5rem;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   CARDS SECTION & 3D FLIP ANIMATION
+   ======================================== */
+.cards-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+    gap: 2rem;
+    justify-content: center;
+    width: 100%;
+    perspective: 1000px;
+}
+
+/* Individual Card Styling */
+.card {
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+    cursor: pointer;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform var(--flip-duration) var(--flip-ease);
+    transform-style: preserve-3d;
+}
+
+/* Flip animation trigger */
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-back,
+.card-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius);
+}
+
+/* BACK SIDE: Gold texture */
+.card-back {
+    background: linear-gradient(135deg, #d4af37 0%, #e5c158 50%, #c9a227 100%);
+    border: 3px solid #8b7620;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.gold-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0, 0, 0, 0.1) 2px, rgba(0, 0, 0, 0.1) 4px),
+        repeating-linear-gradient(-45deg, transparent, transparent 2px, rgba(0, 0, 0, 0.05) 2px, rgba(0, 0, 0, 0.05) 4px);
+    border-radius: var(--border-radius);
+}
+
+.back-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #6b5a2b;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+    letter-spacing: 3px;
+    z-index: 1;
+}
+
+/* FRONT SIDE: Card details */
+.card-front {
+    background: linear-gradient(135deg, var(--card-bg-dark), var(--purple-light));
+    border: 2px solid var(--accent-gold);
+    transform: rotateY(180deg);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.card-symbol {
+    font-size: 3rem;
+    color: var(--accent-light-gold);
+}
+
+.card-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    letter-spacing: 1px;
+}
+
+.card-description {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ========================================
+   AI INTERPRETATION SECTION
+   ======================================== */
+.interpretation-section {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.interpretation-section.hidden {
+    display: none;
+}
+
+.interpretation-card {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, rgba(45, 27, 78, 0.9), rgba(74, 40, 117, 0.9));
+    border: 2px solid var(--accent-gold);
+    border-radius: var(--border-radius);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
+}
+
+.interpretation-card h2 {
+    font-size: 2rem;
+    color: var(--accent-light-gold);
+    margin-bottom: 1.5rem;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.selected-cards {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: rgba(26, 0, 51, 0.5);
+    border-left: 4px solid var(--accent-gold);
+    border-radius: 4px;
+}
+
+.selected-cards p {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+#cards-drawn {
+    color: var(--accent-light-gold);
+    font-weight: 600;
+}
+
+.interpretation-content {
+    margin-bottom: 2rem;
+    min-height: 150px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.interpretation-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-light);
+    width: 100%;
+    text-align: left;
+}
+
+/* Loading Spinner */
+.spinner {
+    border: 4px solid rgba(212, 175, 55, 0.2);
+    border-top: 4px solid var(--accent-gold);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.api-info {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   RESET BUTTON
+   ======================================== */
+.reset-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.reset-container.hidden {
+    display: none;
+}
+
+.reset-btn {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: var(--accent-gold);
+    border: 2px solid var(--accent-gold);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reset-btn:hover {
+    background-color: var(--accent-gold);
+    color: var(--primary-dark);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+/* ========================================
+   MOBILE RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --card-width: 240px;
+        --card-height: 360px;
+    }
+
+    .container {
+        padding: 1.5rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
+    }
+
+    .header {
+        margin-bottom: 2rem;
+    }
+
+    .input-section {
+        margin-bottom: 3rem;
+    }
+
+    .question-input {
+        min-height: 80px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    .cards-container {
+        gap: 1.5rem;
+    }
+
+    .interpretation-card {
+        padding: 1.5rem;
+    }
+
+    .interpretation-card h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --card-width: 200px;
+        --card-height: 300px;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+        font-size: 0.9rem;
+    }
+
+    .header {
+        margin-bottom: 1.5rem;
+    }
+
+    .input-section {
+        margin-bottom: 2.5rem;
+    }
+
+    .input-wrapper label {
+        font-size: 1rem;
+    }
+
+    .divination-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .cards-section {
+        margin-bottom: 2rem;
+    }
+
+    .cards-container {
+        gap: 1rem;
+    }
+
+    .card-content {
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+
+    .card-symbol {
+        font-size: 2rem;
+    }
+
+    .card-name {
+        font-size: 1.1rem;
+    }
+
+    .card-description {
+        font-size: 0.8rem;
+    }
+
+    .interpretation-card {
+        padding: 1rem;
+    }
+
+    .interpretation-card h2 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .selected-cards {
+        margin-bottom: 1rem;
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .back-text {
+        font-size: 1.2rem;
+    }
+}
+
+/* ========================================
+   ACCESSIBILITY & FOCUS STATES
+   ======================================== */
+
+button:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--accent-light-gold);
+    outline-offset: 2px;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .starry-sky {
+        animation: none;
+    }
+}
